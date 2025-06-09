@@ -41,3 +41,4 @@ class Account:
                 
         print("=================================")
         print(f"Saldo: R$ {self.__balance:.2f}")
+        print("=================================")
