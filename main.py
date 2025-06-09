@@ -12,7 +12,7 @@ def main():
     while True:
         option = input(menu)
         
-        match option:
+        match option.lower():
             case 'd':
                 value = float(input("Informe o valor do depósito: "))
                 account.deposit(value)

@@ -11,6 +11,7 @@ class Account:
             return False
         self.__balance += value
         self.__transactions.append({"Depósito": value})
+        print(f"Depósito de {value:.2f} realizado com sucesso!")
         return True
     
     def withdraw(self, value: float) -> bool:
@@ -27,15 +28,16 @@ class Account:
         self.__balance -= value
         self.__transactions.append({"Saque": value})
         self.__withdrawal_limit -= 1
+        print(f"Saque de {value:.2f} realizado com sucesso!")
         return True
     
     def show_transactions(self) -> None:
         print("=================================")
-        print("|\t       Extrato:\t|")
+        print("Extrato:")
         print("=================================")
         for transaction in self.__transactions:
             for key, value in transaction.items():
-                print(f"|\t{key}: R$ {value:.2f}\t|")
+                print(f"{key}: R$ {value:.2f}")
                 
         print("=================================")
-        print(f"\nSaldo: R$ {self.__balance:.2f}")
+        print(f"Saldo: R$ {self.__balance:.2f}")
