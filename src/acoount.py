@@ -1,0 +1,41 @@
+class Account:
+    def __init__(self):
+        self.__balance = 0
+        self.__withdrawal_limit = 3
+        self.__max_withdrawal = 500
+        self.__transactions = []
+        
+    def deposit(self, value: float) -> bool:
+        if value < 0:
+            print("Não é possível depositar valores negativos.")
+            return False
+        self.__balance += value
+        self.__transactions.append({"Depósito": value})
+        return True
+    
+    def withdraw(self, value: float) -> bool:
+        if self.__withdrawal_limit == 0:
+            print("Você atingiu o limite de saques diários.")
+            return False
+        if value > self.__max_withdrawal:
+            print(f"O valor máximo de saque é R$ {self.__max_withdrawal:.2f}")
+            return False
+        if value > self.__balance:
+            print("Saldo insuficiente.")
+            return False
+
+        self.__balance -= value
+        self.__transactions.append({"Saque": value})
+        self.__withdrawal_limit -= 1
+        return True
+    
+    def show_transactions(self) -> None:
+        print("=================================")
+        print("|\t       Extrato:\t|")
+        print("=================================")
+        for transaction in self.__transactions:
+            for key, value in transaction.items():
+                print(f"|\t{key}: R$ {value:.2f}\t|")
+                
+        print("=================================")
+        print(f"\nSaldo: R$ {self.__balance:.2f}")
