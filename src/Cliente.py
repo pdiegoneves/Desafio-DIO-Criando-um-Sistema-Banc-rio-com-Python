@@ -13,6 +13,8 @@ class Cliente:
         for i, conta in enumerate(self._contas):
             print(f"Conta {i + 1}: {conta}")
 
+        return self._contas
+
 
 class PessoaFisica(Cliente):
     def __init__(self, nome, data_nascimento, cpf, endereco):

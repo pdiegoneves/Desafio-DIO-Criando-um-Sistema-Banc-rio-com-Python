@@ -149,7 +149,7 @@ class Deposito(Transacao):
         return self._valor
 
     def registrar(self, conta):
-        sucesso_transacao = conta.depositaself.valor)
+        sucesso_transacao = conta.deposita(self.valor)
 
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
